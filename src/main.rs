@@ -1,18 +1,8 @@
-//! Requires the 'framework' feature flag be enabled in your project's
-//! `Cargo.toml`.
-//!
-//! This can be enabled by specifying the feature in the dependency section:
-//!
-//! ```toml
-//! [dependencies.serenity]
-//! git = "https://github.com/serenity-rs/serenity.git"
-//! features = ["framework", "standard_framework"]
-//! ```
 mod commands;
 
 use std::{collections::HashSet, env, sync::Arc};
 
-use commands::{math::*, meta::*, owner::*};
+use commands::{rfact::*, meta::*, owner::*};
 use serenity::{
     async_trait,
     client::bridge::gateway::ShardManager,
@@ -44,7 +34,7 @@ impl EventHandler for Handler {
 }
 
 #[group]
-#[commands(multiply, ping, quit)]
+#[commands(randomFact, ping, quit)]
 struct General;
 
 #[tokio::main]

@@ -1,3 +1,3 @@
-pub mod math;
+pub mod rfact;
 pub mod meta;
 pub mod owner;
