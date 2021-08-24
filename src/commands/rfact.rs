@@ -5,7 +5,7 @@ use serde::Deserialize;
 use reqwest::Result;
 
 #[derive(Deserialize, Debug)]
-struct Joke {
+struct RandomFact {
     id: String,
     text: String,
     source: String,
@@ -16,17 +16,16 @@ struct Joke {
 
 #[command]
 pub async fn randomFact(ctx: &Context, msg: &Message) -> CommandResult {
-
     let joke = query_joke_api();
     msg.channel_id.say(&ctx.http, joke.await?.text).await?;
 
     Ok(())
 }
 
-async fn query_joke_api() -> Result<Joke> {
+async fn query_joke_api() -> Result<RandomFact> {
     let request_url = "https://uselessfacts.jsph.pl/random.json?language=en";
     let response = reqwest::get(*&request_url).await?;
-    let joke: Joke = response.json().await?;
+    let randomFact: RandomFact = response.json().await?;
 
-    Ok(joke)
+    Ok(randomFact)
 }
