@@ -34,7 +34,7 @@ impl EventHandler for Handler {
 }
 
 #[group]
-#[commands(randomFact, ping, quit)]
+#[commands(random_fact, ping, quit)]
 struct General;
 
 #[tokio::main]
@@ -53,7 +53,6 @@ async fn main() {
     tracing::subscriber::set_global_default(subscriber).expect("Failed to start the logger");
 
     let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
-
     let http = Http::new_with_token(&token);
 
     // We will fetch your bot's owners and id

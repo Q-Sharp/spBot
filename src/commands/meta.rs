@@ -8,3 +8,10 @@ async fn ping(ctx: &Context, msg: &Message) -> CommandResult {
 
     Ok(())
 }
+
+fn testSome(ctx: &Context, msg: &Message) -> CommandResult {
+
+    let _sume = Some(2);
+
+    Ok(())
+}
