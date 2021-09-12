@@ -42,7 +42,6 @@ async fn query_joke_api() -> Result<impl Fact> {
     Ok(random_fact)
 }
 
-#[inline(always)]
 fn get_jokeapi_url() -> &'static str {
-    JOKE_APIS[rand::thread_rng().gen_range(0..JOKE_APIS.len() - 1)]
+    JOKE_APIS[rand::thread_rng().gen_range(0..JOKE_APIS.len())]
 }
