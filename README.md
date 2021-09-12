@@ -9,5 +9,6 @@ Testing docker.
 
 # how-To
 
-docker build --build-arg TOKEN=[YourTokenHere] -t  spbot .
-docker run --tty=true --interactive=true --detach=true --restart unless-stopped --name spbot spbot
+<code>docker build --build-arg TOKEN=[YourTokenHere] -t  spbot .</code>
+
+<code>docker run --tty=true --interactive=true --detach=true --restart unless-stopped --name spbot spbot</code>
