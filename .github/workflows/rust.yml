@@ -22,15 +22,16 @@ jobs:
       run: cargo test --verbose --release
     - name: Copy files
       run: |
-            mkdir --parents ./spbot/spbot
-            mv /home/runner/work/spBot/spBot/target/release/spbot ./spbot/spbot
-            echo "DISCORD_TOKEN = ${{ secrets.TOKEN }}" > ./spbot/.env
+            mkdir --parents ./spbot/
+            cd ./spbot/
+            mv /home/runner/work/spBot/spBot/target/release/spbot ./spbot
+            echo "\"DISCORD_TOKEN\" = \"${{ secrets.TOKEN }}\"" > .env
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rltgoDzvO --delete-excluded --filter 'protect .env'"
-          SOURCE: ./spbot/
+          SOURCE: .
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
