@@ -27,12 +27,7 @@ FROM debian:buster-slim
 
 ENV TOKEN=""
 
-RUN echo "#!/bin/bash\n" \
-         "IFS=';'\n" \
-         "if [ ! -e \".env\" ]; then\n" \
-         "  echo \"DISCORD_TOKEN = ${TOKEN}\" > .env\n" \
-         "fi\n" > script.sh
-
+RUN echo "echo \"DISCORD_TOKEN = ${TOKEN}\" > .env\n" 2>&1 | tee script.sh
 RUN chmod +x script.sh
 RUN ./script.sh
 
@@ -44,4 +39,4 @@ RUN apt-get install -y openssl libssl-dev
 RUN apt upgrade
 
 # set the startup command to run your binary
-CMD ["./spbot"]
+CMD ["./spbot" "${TOKEN}" "/"]
