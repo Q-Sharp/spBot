@@ -22,7 +22,7 @@ jobs:
       run: cargo test --verbose --release
     - name: Copy files
       run: |
-            mkdir ./spbot/spbot
+            mkdir --parents ./spbot/spbot
             mv /home/runner/work/spBot/spBot/target/release/spbot ./spbot/spbot
             echo "DISCORD_TOKEN = ${{ secrets.TOKEN }}" > ./spbot/.env
     - name: Deploy to Server
