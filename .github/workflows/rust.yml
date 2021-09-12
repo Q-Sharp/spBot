@@ -16,14 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: cargo build --verbose --release
-    - name: Run tests
-      run: cargo test --verbose --release
+ #   - name: Build
+  #    run: cargo build --verbose --release
+  #  - name: Run tests
+  #    run: cargo test --verbose --release
     - name: Copy files
       run: |
             mkdir --parents /home/runner/spbot/ &
             mv /home/runner/work/spBot/spBot/target/release/spbot /home/runner/spbot/spbot &
+            touch /home/runner/spbot/.env &
             echo "\"DISCORD_TOKEN\" = \"${{ secrets.TOKEN }}\"" > /home/runner/spbot/.env
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.1.5
