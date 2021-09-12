@@ -25,7 +25,7 @@ RUN cargo build --release
 # our final base
 FROM debian:buster-slim
 
-ARG TOKEN=""
+ENV TOKEN=""
 
 RUN echo "#!/bin/bash\n" \
          "IFS=';'\n" \
