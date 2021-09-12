@@ -1,5 +1,6 @@
-# spBot
-
+# spBot 
+[![Rust](https://github.com/Q-Sharp/spBot/actions/workflows/rust.yml/badge.svg)](https://github.com/Q-Sharp/spBot/actions/workflows/rust.yml)
+[![Docker Image CI](https://github.com/Q-Sharp/spBot/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Q-Sharp/spBot/actions/workflows/docker-image.yml)
 Just another discord bot.
 
 # goal
