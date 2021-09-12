@@ -22,8 +22,8 @@ jobs:
       run: cargo test --verbose --release
     - name: Copy files
       run: |
-            mkdir --parents /home/runner/spbot/
-            mv /home/runner/work/spBot/spBot/target/release/spbot /home/runner/spbot/spbot
+            mkdir --parents /home/runner/spbot/ &
+            mv /home/runner/work/spBot/spBot/target/release/spbot /home/runner/spbot/spbot &
             echo "\"DISCORD_TOKEN\" = \"${{ secrets.TOKEN }}\"" > /home/runner/spbot/.env
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.1.5
