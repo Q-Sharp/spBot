@@ -40,22 +40,15 @@ struct General;
 #[tokio::main]
 async fn main() {
 
-    let args: Vec<String> = env::args().collect();
-
-    let token = match Some(String::from(&args[0])) {
-        Some(f) => f,
-        None => env::var("DISCORD_TOKEN").expect("Expected a token in the environment")
-    };
-
-    let prefix = match Some(String::from(&args[1])) {
-        Some(f) => f,
-        None => env::var("DISCORD_PREFIX").expect("Expected a prefix in the environment")
-    };
+    dotenv::dotenv().expect("Failed to load .env file");
 
     let subscriber =
         FmtSubscriber::builder().with_env_filter(EnvFilter::from_default_env()).finish();
 
     tracing::subscriber::set_global_default(subscriber).expect("Failed to start the logger");
+
+    let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
+    let prefix = env::var("DISCORD_PREFIX").expect("Expected a prefix in the environment");
 
     let http = Http::new_with_token(&token);
 

@@ -25,7 +25,8 @@ jobs:
             mkdir deploy/ 
             mv target/release/spbot deploy/spbot
             touch deploy/.env
-            echo "\"DISCORD_TOKEN\" = \"${{ secrets.TOKEN }}\"" > deploy/.env
+            echo DISCORD_TOKEN = ${{ secrets.TOKEN }} > deploy/.env
+            echo DISCORD_PREFIX = / >> deploy/.env
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
