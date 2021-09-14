@@ -13,6 +13,7 @@ use serenity::{
 };
 use tracing::{error, info};
 use tracing_subscriber::{EnvFilter, FmtSubscriber};
+use tracing::log::LevelFilter;
 
 pub struct ShardManagerContainer;
 
@@ -39,6 +40,7 @@ struct General;
 
 #[tokio::main]
 async fn main() {
+    simple_logging::log_to_file("spbot.log", LevelFilter::Info).expect("logger PANIK");
 
     dotenv::dotenv().expect("Failed to load .env file");
 
