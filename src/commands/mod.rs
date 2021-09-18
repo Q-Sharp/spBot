@@ -1,3 +1,3 @@
 pub mod rfact;
-pub mod meta;
+pub mod help;
 pub mod owner;

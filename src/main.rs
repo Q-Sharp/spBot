@@ -2,7 +2,7 @@ mod commands;
 
 use std::{collections::HashSet, env, sync::Arc};
 
-use commands::{rfact::*, meta::*, owner::*};
+use commands::{rfact::*, help::*, owner::*};
 use serenity::{
     async_trait,
     client::bridge::gateway::ShardManager,
@@ -35,14 +35,13 @@ impl EventHandler for Handler {
 }
 
 #[group]
-#[commands(random_fact, ping, quit)]
+#[commands(random_fact, help, quit)]
 struct General;
 
 #[tokio::main]
 async fn main() {
-    simple_logging::log_to_file("spbot.log", LevelFilter::Info).expect("logger PANIK");
-
     dotenv::dotenv().expect("Failed to load .env file");
+    simple_logging::log_to_file("spbot.log", LevelFilter::Info).expect("logger PANIK");
 
     let subscriber =
         FmtSubscriber::builder().with_env_filter(EnvFilter::from_default_env()).finish();
@@ -66,7 +65,8 @@ async fn main() {
 
     // Create the framework
     let framework =
-        StandardFramework::new().configure(|c| c.owners(owners).prefix(&prefix)).group(&GENERAL_GROUP);
+        StandardFramework::new().configure(|c| c.owners(owners).prefix(&prefix))
+                                .group(&GENERAL_GROUP);
 
     let mut client = Client::builder(&token)
         .framework(framework)

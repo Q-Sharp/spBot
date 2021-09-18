@@ -28,7 +28,7 @@ pub trait Fact {
 const JOKE_APIS: &'static [&str] = &["https://uselessfacts.jsph.pl/random.json?language=en"];
 
 #[command("randomFact")]
-#[aliases("rf", "rngF")]
+#[aliases("rf", "rngF", "randomfact", "fact")]
 pub async fn random_fact(ctx: &Context, msg: &Message) -> CommandResult {
     let joke = query_joke_api().await?;
     msg.channel_id.say(&ctx.http, joke.get_fact()).await?;
