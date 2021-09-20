@@ -11,4 +11,4 @@ Testing docker.
 
 # how-To
 
-<code>docker run --tty=true --interactive=true --detach=true --restart unless-stopped --env DISCORD_TOKEN=[YourTokenHere] --env DISCORD_PREFIX=[YourPRefixHere] --name spbot spbot</code>
+<code>docker run --tty=true --interactive=true --detach=true --restart unless-stopped --env DISCORD_TOKEN=[YourTokenHere] --env DISCORD_PREFIX=[YourPrefixHere] --name spbot spbot</code>
