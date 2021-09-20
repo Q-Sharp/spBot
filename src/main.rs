@@ -40,7 +40,7 @@ struct General;
 
 #[tokio::main]
 async fn main() {
-    dotenv::dotenv().expect("Failed to load .env file");
+    let _rs = dotenv::dotenv();
     simple_logging::log_to_file("spbot.log", LevelFilter::Info).expect("logger PANIK");
 
     let subscriber =

@@ -16,20 +16,12 @@ RUN rm src/*.rs
 # 4. Now that the dependency is built, copy your source code
 COPY ./src ./src
 
-
 # 5. Build for release.
 RUN rm ./target/release/deps/spbot*
 RUN cargo build --release
 
-
 # our final base
 FROM debian:buster-slim
-
-ENV TOKEN=""
-
-RUN echo "echo \"DISCORD_TOKEN = ${TOKEN}\" > .env" > script.sh
-RUN chmod +x script.sh
-RUN ./script.sh
 
 # copy the build artifact from the build stage
 COPY --from=build /spbot/target/release/spbot .
@@ -39,4 +31,4 @@ RUN apt-get install -y openssl libssl-dev
 RUN apt upgrade
 
 # set the startup command to run your binary
-CMD [ "./spbot $TOKEN ~" ] 
+CMD "./spbot"
